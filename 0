@@ -1,0 +1,54 @@
+By Daniil Pshenichni, @dapshen, rid.team
+
+Defi DEX AMM Classic Standart V2 Liquidity Pools, How they work? (PancakeSwap, SushiSwap, Uniswap).
+
+Variables:
+
+A – Token A(or supply)
+B – Token B(or supply)
+C – reserve of token “A” in LP
+D – reserve of token “B” in LP
+E – “A” tokens bought by swap
+F – “B” tokens bought by swap
+G – “A” tokens sold by swap
+H – “B” tokens sold by swap
+I – Price of token “A” in token “B” 
+J – Price of token “B” in token “A”
+K – Constant number (We need it for price and liquidity formulas, it is constant till someone adds/removes some LP)
+L – LP tokens(LP tokens minted at the start of creating pool, or when someone adds/removes them)
+M – Market Cap of token “A” in token “B”
+N – Market Cap of token “B” in token “A”
+
+Formulas:
+
+K = C * D
+
+L = √K
+
+Amount of token “B” bought(F),
+while selling amount of token “A”(G):
+F = D – (K / (C + G))
+
+Amount of token “A” bought(E),
+while selling amount of token “B”(H):
+E = C – (K / (D + H))
+
+Amount of token “A” needed to sell(G),
+to buy amount of token “B”(F):
+G = (K / (D – F)) – C | Reverse Calculation
+
+Amount of token “B” needed to sell(H),
+to buy amount of token “A”(E):
+H = (K / (C – E)) – D | Reverse Calculation
+
+Price of token “A” in token “B”(I):
+I = D / C
+
+Price of token “B” in token “A”(J):
+J = C / D
+
+Market Cap of token “A” in token “B”(M):
+M = I * A
+
+Market Cap of token “B” in token “A”(N):
+N = J * B
